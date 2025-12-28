@@ -1,4 +1,4 @@
-// 1. CUSTOM CURSOR LOGIC
+// 1. CUSTOM CURSOR
 const cursor = document.querySelector('.cursor-dot');
 if (cursor) {
     document.addEventListener('mousemove', (e) => {
@@ -7,14 +7,13 @@ if (cursor) {
     });
 }
 
-// 2. THE COUNTER FUNCTION (Defined FIRST to avoid errors)
+// 2. THE COUNTER ENGINE
 const countNumbers = () => {
     const counters = document.querySelectorAll('.count');
+    
     counters.forEach(counter => {
         const target = parseFloat(counter.getAttribute('data-target'));
-        if (isNaN(target)) return; // Safety check
-
-        const duration = 2000; 
+        const duration = 2000; // 2 seconds
         let startTime = null;
 
         const animate = (currentTime) => {
@@ -22,6 +21,7 @@ const countNumbers = () => {
             const progress = Math.min((currentTime - startTime) / duration, 1);
             const value = progress * target;
             
+            // Decimal check for 89.94
             counter.innerText = target % 1 !== 0 ? value.toFixed(2) : Math.floor(value);
             
             if (progress < 1) {
@@ -34,27 +34,23 @@ const countNumbers = () => {
     });
 };
 
-// 3. THE TRIGGER (Intersection Observer)
-const startObserver = () => {
-    const statsSection = document.querySelector('#stats');
-    
-    if (!statsSection) {
-        countNumbers(); // Fallback: If section not found, just run it
-        return;
-    }
+// 3. THE TRIGGER (Observer)
+// This part detects when the #stats section enters the screen
+const statsSection = document.querySelector('#stats');
 
+if (statsSection) {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            // Trigger when the section is visible
             if (entry.isIntersecting) {
+                console.log("Stats visible! Starting count..."); // This helps you debug
                 countNumbers();
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
 
     observer.observe(statsSection);
-};
-
-// 4. RUN ON PAGE LOAD
-window.addEventListener('DOMContentLoaded', startObserver);
+} else {
+    // If for some reason #stats isn't found, just run the numbers after 1 second
+    setTimeout(countNumbers, 1000);
+}
