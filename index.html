@@ -1,75 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEERAJ CHOPRA | The Gold Standard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="cursor-dot"></div> <nav class="navbar">
-        <div class="logo">NC<span>1</span></div>
-        <div class="nav-links">
-            <a href="#home">HOME</a>
-            <a href="#stats">STATISTICS</a>
-            <a href="#career">LEGACY</a>
-        </div>
-    </nav>
+<section id="career" class="legacy-section">
+    <h2 class="section-heading">CHAMPIONSHIP HISTORY</h2>
+    
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>YEAR</th>
+                    <th>EVENT</th>
+                    <th>DISTANCE</th>
+                    <th>RESULT</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="openModal('2016')">
+                    <td>2016</td>
+                    <td>World U20 Championships</td>
+                    <td>86.48m</td>
+                    <td class="gold-text">WORLD RECORD</td>
+                    <td><button class="view-btn">Details</button></td>
+                </tr>
+                <tr onclick="openModal('2021')">
+                    <td>2021</td>
+                    <td>Tokyo Olympics</td>
+                    <td>87.58m</td>
+                    <td class="gold-text">GOLD MEDAL</td>
+                    <td><button class="view-btn">Details</button></td>
+                </tr>
+                <tr onclick="openModal('2023')">
+                    <td>2023</td>
+                    <td>World Athletics Champ</td>
+                    <td>88.17m</td>
+                    <td class="gold-text">GOLD MEDAL</td>
+                    <td><button class="view-btn">Details</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
 
-    <section id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h2 class="reveal-text">INDIA'S GOLDEN SON</h2>
-            <h1 class="main-title">NEERAJ <br> CHOPRA</h1>
-            <div class="hero-cta">
-                <a href="#stats" class="main-btn">EXPLORE METRICS</a>
+<div id="detailsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modalBody">
             </div>
-        </div>
-    </section>
-
-    <section id="stats" class="stats-grid">
-        <div class="stat-item" data-aos="fade-up">
-            <span class="stat-number count" data-target="89.94">0</span>
-            <span class="stat-label">PERSONAL BEST (M)</span>
-        </div>
-        <div class="stat-item" data-aos="fade-up">
-            <span class="stat-number count" data-target="2">0</span>
-            <span class="stat-label">OLYMPIC MEDALS</span>
-        </div>
-        <div class="stat-item" data-aos="fade-up">
-            <span class="stat-number count" data-target="1">0</span>
-            <span class="stat-label">WORLD RANKING</span>
-        </div>
-    </section>
-
-    <section id="career" class="legacy-section">
-        <h2 class="section-heading">THE JOURNEY</h2>
-        <div class="timeline-container">
-            <div class="milestone-card active">
-                <div class="m-year">2016</div>
-                <div class="m-content">
-                    <h3>World U20 Record</h3>
-                    <p>86.48m - Bydgoszcz, Poland.</p>
-                </div>
-            </div>
-            <div class="milestone-card">
-                <div class="m-year">2021</div>
-                <div class="m-content">
-                    <h3>Tokyo Olympic Gold</h3>
-                    <p>87.58m - First Track & Field Gold for India.</p>
-                </div>
-            </div>
-            <div class="milestone-card">
-                <div class="m-year">2023</div>
-                <div class="m-content">
-                    <h3>World Champion</h3>
-                    <p>88.17m - Budapest, Hungary.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    </div>
+</div>
