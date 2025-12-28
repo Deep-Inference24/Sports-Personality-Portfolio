@@ -3,33 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neeraj Chopra | Elite Portfolio</title>
+    <title>Neeraj Chopra | World Champion</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
     <nav class="navbar">
-        <div class="logo">NEERAJ CHOPRA</div>
+        <div class="logo hover-target">NEERAJ CHOPRA</div>
     </nav>
 
     <section id="stats" class="stats-grid">
-        <div class="stat-item">
+        <div class="stat-item hover-target">
             <span class="stat-number count" data-target="89.94">0</span>
             <span class="stat-label">PERSONAL BEST (M)</span>
         </div>
-        <div class="stat-item">
+        <div class="stat-item hover-target">
             <span class="stat-number count" data-target="2">0</span>
             <span class="stat-label">OLYMPIC MEDALS</span>
         </div>
-        <div class="stat-item">
+        <div class="stat-item hover-target">
             <span class="stat-number count" data-target="1">0</span>
             <span class="stat-label">WORLD RANKING</span>
         </div>
     </section>
 
-    <section id="career" class="legacy-section">
-        <h2 class="section-heading">CHAMPIONSHIP HISTORY</h2>
+    <section class="legacy-section">
+        <h2 class="section-heading hover-target">CHAMPIONSHIP HISTORY</h2>
         <div class="table-container">
             <table class="data-table">
                 <thead>
@@ -38,30 +40,41 @@
                         <th>EVENT</th>
                         <th>DISTANCE</th>
                         <th>RESULT</th>
-                        <th>ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr onclick="openModal('2016')">
+                    <tr class="hover-target row-clickable" onclick="openModal('2016')">
                         <td>2016</td>
                         <td>World U20 Championships</td>
                         <td>86.48m</td>
-                        <td class="gold-text">WORLD RECORD</td>
-                        <td><button class="view-btn">Details</button></td>
+                        <td>
+                            <div class="result-cell">
+                                <span class="gold-text">WORLD RECORD</span>
+                                <span class="click-hint">Click to know more</span>
+                            </div>
+                        </td>
                     </tr>
-                    <tr onclick="openModal('2021')">
+                    <tr class="hover-target row-clickable" onclick="openModal('2021')">
                         <td>2021</td>
                         <td>Tokyo Olympics</td>
                         <td>87.58m</td>
-                        <td class="gold-text">GOLD MEDAL</td>
-                        <td><button class="view-btn">Details</button></td>
+                        <td>
+                            <div class="result-cell">
+                                <span class="gold-text">GOLD MEDAL</span>
+                                <span class="click-hint">Click to know more</span>
+                            </div>
+                        </td>
                     </tr>
-                    <tr onclick="openModal('2023')">
+                    <tr class="hover-target row-clickable" onclick="openModal('2023')">
                         <td>2023</td>
                         <td>World Athletics Champ</td>
                         <td>88.17m</td>
-                        <td class="gold-text">GOLD MEDAL</td>
-                        <td><button class="view-btn">Details</button></td>
+                        <td>
+                            <div class="result-cell">
+                                <span class="gold-text">GOLD MEDAL</span>
+                                <span class="click-hint">Click to know more</span>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
