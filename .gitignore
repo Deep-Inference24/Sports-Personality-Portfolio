@@ -1,0 +1,9 @@
+# OS junk files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Text Editor settings
+.vscode/
+.idea/
+*.log
