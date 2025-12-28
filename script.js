@@ -1,7 +1,7 @@
-// 1. DUAL-ELEMENT CURSOR
 const dot = document.querySelector('.cursor-dot');
 const outline = document.querySelector('.cursor-outline');
 
+// Cursor Movement
 document.addEventListener('mousemove', (e) => {
     dot.style.left = e.clientX + 'px';
     dot.style.top = e.clientY + 'px';
@@ -9,21 +9,22 @@ document.addEventListener('mousemove', (e) => {
     outline.style.top = e.clientY + 'px';
 });
 
-// Cursor Reactivity
-document.querySelectorAll('.hover-target, .row-clickable').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        outline.style.transform = 'translate(-50%, -50%) scale(1.8)';
-        outline.style.background = 'rgba(197, 160, 89, 0.1)';
-        dot.style.transform = 'translate(-50%, -50%) scale(0.5)';
+// Cursor Interactions - works on modal close button too
+const applyHoverEffect = () => {
+    document.querySelectorAll('.hover-target, .row-clickable, .view-btn').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            outline.style.transform = 'translate(-50%, -50%) scale(1.8)';
+            outline.style.background = 'rgba(197, 160, 89, 0.1)';
+        });
+        item.addEventListener('mouseleave', () => {
+            outline.style.transform = 'translate(-50%, -50%) scale(1)';
+            outline.style.background = 'transparent';
+        });
     });
-    item.addEventListener('mouseleave', () => {
-        outline.style.transform = 'translate(-50%, -50%) scale(1)';
-        outline.style.background = 'transparent';
-        dot.style.transform = 'translate(-50%, -50%) scale(1)';
-    });
-});
+};
+applyHoverEffect();
 
-// 2. COUNTER ENGINE (Fixed '0' issue)
+// Counter logic for personal bests
 const countStats = () => {
     document.querySelectorAll('.count').forEach(c => {
         const target = parseFloat(c.getAttribute('data-target'));
@@ -43,9 +44,9 @@ const countStats = () => {
 const observer = new IntersectionObserver(entries => {
     if(entries[0].isIntersecting) { countStats(); observer.disconnect(); }
 }, { threshold: 0.5 });
-observer.observe(document.querySelector('#stats'));
+if(document.querySelector('#stats')) observer.observe(document.querySelector('#stats'));
 
-// 3. MODAL DATABASE
+// Details Content
 const data = {
     '2016': { t: "WORLD U20 RECORD", d: "A historic 86.48m throw in Bydgoszcz, Poland. Neeraj became the first Indian to hold a world record in track and field." },
     '2021': { t: "TOKYO OLYMPIC GOLD", d: "With a second-round throw of 87.58m, he secured India's first ever track and field Olympic Gold medal." },
@@ -57,8 +58,8 @@ window.openModal = (yr) => {
     const body = document.getElementById('modalBody');
     body.innerHTML = `<h1 style="color:#C5A059; font-family:Syncopate; font-size:3rem; margin-bottom:30px;">${data[yr].t}</h1><p style="font-size:1.4rem; line-height:1.6; font-weight:300;">${data[yr].d}</p>`;
     modal.style.display = "block";
+    applyHoverEffect(); // Re-apply to ensure close button reacts
 };
 
 window.closeModal = () => document.getElementById('detailsModal').style.display = "none";
-
 window.onclick = (e) => { if (e.target.id === 'detailsModal') closeModal(); };
