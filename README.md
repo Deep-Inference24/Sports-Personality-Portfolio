@@ -27,6 +27,7 @@ During this project, I faced and solved a few challenges:
 2. **Handling Decimals:** Since a javelin throw is measured in decimals, I learned how to make my counter script show two decimal places correctly.
 3. **GitHub Basics:** This is my first time using GitHub for hosting and version control!
 
+
 ## 📂 How to run it locally
 1. Download the files.
 2. Open `index.html` in any browser.
