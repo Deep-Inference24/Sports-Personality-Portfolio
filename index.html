@@ -1,48 +1,80 @@
-<section id="career" class="legacy-section">
-    <h2 class="section-heading">CHAMPIONSHIP HISTORY</h2>
-    
-    <div class="table-container">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>YEAR</th>
-                    <th>EVENT</th>
-                    <th>DISTANCE</th>
-                    <th>RESULT</th>
-                    <th>ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr onclick="openModal('2016')">
-                    <td>2016</td>
-                    <td>World U20 Championships</td>
-                    <td>86.48m</td>
-                    <td class="gold-text">WORLD RECORD</td>
-                    <td><button class="view-btn">Details</button></td>
-                </tr>
-                <tr onclick="openModal('2021')">
-                    <td>2021</td>
-                    <td>Tokyo Olympics</td>
-                    <td>87.58m</td>
-                    <td class="gold-text">GOLD MEDAL</td>
-                    <td><button class="view-btn">Details</button></td>
-                </tr>
-                <tr onclick="openModal('2023')">
-                    <td>2023</td>
-                    <td>World Athletics Champ</td>
-                    <td>88.17m</td>
-                    <td class="gold-text">GOLD MEDAL</td>
-                    <td><button class="view-btn">Details</button></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neeraj Chopra | Elite Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cursor-dot"></div>
 
-<div id="detailsModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <div id="modalBody">
-            </div>
+    <nav class="navbar">
+        <div class="logo">NEERAJ CHOPRA</div>
+    </nav>
+
+    <section id="stats" class="stats-grid">
+        <div class="stat-item">
+            <span class="stat-number count" data-target="89.94">0</span>
+            <span class="stat-label">PERSONAL BEST (M)</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number count" data-target="2">0</span>
+            <span class="stat-label">OLYMPIC MEDALS</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number count" data-target="1">0</span>
+            <span class="stat-label">WORLD RANKING</span>
+        </div>
+    </section>
+
+    <section id="career" class="legacy-section">
+        <h2 class="section-heading">CHAMPIONSHIP HISTORY</h2>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>YEAR</th>
+                        <th>EVENT</th>
+                        <th>DISTANCE</th>
+                        <th>RESULT</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr onclick="openModal('2016')">
+                        <td>2016</td>
+                        <td>World U20 Championships</td>
+                        <td>86.48m</td>
+                        <td class="gold-text">WORLD RECORD</td>
+                        <td><button class="view-btn">Details</button></td>
+                    </tr>
+                    <tr onclick="openModal('2021')">
+                        <td>2021</td>
+                        <td>Tokyo Olympics</td>
+                        <td>87.58m</td>
+                        <td class="gold-text">GOLD MEDAL</td>
+                        <td><button class="view-btn">Details</button></td>
+                    </tr>
+                    <tr onclick="openModal('2023')">
+                        <td>2023</td>
+                        <td>World Athletics Champ</td>
+                        <td>88.17m</td>
+                        <td class="gold-text">GOLD MEDAL</td>
+                        <td><button class="view-btn">Details</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
     </div>
-</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
