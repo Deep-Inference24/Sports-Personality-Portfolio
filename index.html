@@ -10,25 +10,32 @@
 <body>
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
-
     <div class="bg-gradient-blur"></div>
 
     <nav class="navbar">
         <div class="logo hover-target">NEERAJ CHOPRA</div>
     </nav>
 
-    <section id="stats" class="stats-grid grid-border">
-        <div class="stat-item hover-target border-right" style="--accent: #6366f1;">
-            <span class="stat-number count" data-target="89.94">0</span>
-            <span class="stat-label">PERSONAL BEST (M)</span>
+    <section class="hero">
+        <div class="hero-image-container hover-target">
+            <img src="https://img.olympics.com/images/image/private/t_s_pog_static_content_v3/f_auto/primary/p868u8a7tqmx6id9atx7" alt="Neeraj Chopra" class="hero-img">
         </div>
-        <div class="stat-item hover-target border-right" style="--accent: #f43f5e;">
-            <span class="stat-number count" data-target="2">0</span>
-            <span class="stat-label">OLYMPIC MEDALS</span>
+        <h1 class="hero-title hover-target">GOLDEN<br><span class="outline-text">ARM</span></h1>
+        <p class="hero-sub">Haryana to the World | Olympic Gold | Sub-90m Legend</p>
+    </section>
+
+    <section class="journey-section grid-border">
+        <div class="journey-box hover-target border-right">
+            <h3>Humble Beginnings</h3>
+            <p>From the village of Khandra, Haryana, picking up a javelin to lose weight, only to find his destiny.</p>
         </div>
-        <div class="stat-item hover-target" style="--accent: #C5A059;">
-            <span class="stat-number count" data-target="1">0</span>
-            <span class="stat-label">WORLD RANKING</span>
+        <div class="journey-box hover-target border-right">
+            <h3>Military Grit</h3>
+            <p>A Subedar in the Indian Army. His discipline is fueled by military precision and national pride.</p>
+        </div>
+        <div class="journey-box hover-target">
+            <h3>90m Club</h3>
+            <p>With 89.94m and 90.23m throws, he redefined the limits of Indian athletics on the global stage.</p>
         </div>
     </section>
 
@@ -37,59 +44,44 @@
         <div class="table-container">
             <table class="data-table">
                 <thead>
-                    <tr>
-                        <th>YEAR</th>
-                        <th>EVENT</th>
-                        <th>DISTANCE</th>
-                        <th>RESULT</th>
-                    </tr>
+                    <tr><th>YEAR</th><th>EVENT</th><th>DISTANCE</th><th>RESULT</th></tr>
                 </thead>
                 <tbody>
                     <tr class="hover-target row-clickable color-row-1" onclick="openModal('2016')">
-                        <td class="year-cell">2016</td>
-                        <td class="event-cell">World U20 Championships</td>
-                        <td>86.48m</td>
-                        <td>
-                            <div class="result-cell">
-                                <span class="res-text">WORLD RECORD</span>
-                                <span class="click-hint">Deep Dive</span>
-                            </div>
-                        </td>
+                        <td class="year-cell">2016</td><td>World U20 Championships</td><td>86.48m</td><td><span class="res-text">WORLD RECORD</span></td>
                     </tr>
                     <tr class="hover-target row-clickable color-row-2" onclick="openModal('2021')">
-                        <td class="year-cell">2021</td>
-                        <td class="event-cell">Tokyo Olympics</td>
-                        <td>87.58m</td>
-                        <td>
-                            <div class="result-cell">
-                                <span class="res-text">GOLD MEDAL</span>
-                                <span class="click-hint">Deep Dive</span>
-                            </div>
-                        </td>
+                        <td class="year-cell">2021</td><td>Tokyo Olympics</td><td>87.58m</td><td><span class="res-text">GOLD MEDAL</span></td>
                     </tr>
                     <tr class="hover-target row-clickable color-row-3" onclick="openModal('2023')">
-                        <td class="year-cell">2023</td>
-                        <td class="event-cell">World Athletics Champ</td>
-                        <td>88.17m</td>
-                        <td>
-                            <div class="result-cell">
-                                <span class="res-text">GOLD MEDAL</span>
-                                <span class="click-hint">Deep Dive</span>
-                            </div>
-                        </td>
+                        <td class="year-cell">2023</td><td>World Athletics Champ</td><td>88.17m</td><td><span class="res-text">GOLD MEDAL</span></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <div id="detailsModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn hover-target" onclick="closeModal()">&times;</span>
-            <div id="modalBody"></div>
+    <section class="facts-section">
+        <h2 class="section-heading hover-target">DO YOU KNOW?</h2>
+        <div class="facts-grid">
+            <div class="fact-card hover-target">
+                <span class="fact-icon">🎖️</span>
+                <h4>National Javelin Day</h4>
+                <p>August 7 is now celebrated as National Javelin Day in India to honor his Olympic Gold.</p>
+            </div>
+            <div class="fact-card hover-target">
+                <span class="fact-icon">⚡</span>
+                <h4>The Paris Silver</h4>
+                <p>In 2024, he secured Silver with a monstrous 89.45m throw, proving his consistency at the highest level.</p>
+            </div>
+            <div class="fact-card hover-target">
+                <span class="fact-icon">💨</span>
+                <h4>Speed Demon</h4>
+                <p>His javelin leaves his hand at a speed of nearly 110 km/h, faster than a cheetah’s sprint.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <footer class="footer">
+        <div class="footer-line"></div>
+        <p class="hover-target">NATIONAL PRIDE •
