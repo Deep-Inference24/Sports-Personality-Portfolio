@@ -1,78 +1,29 @@
-:root {
-    --gold: #C5A059;
-    --dark: #050505;
-    --accent: #1a1a1a;
-    --text: #ffffff;
+/* Table Styling */
+.table-container { overflow-x: auto; margin-top: 30px; }
+.data-table {
+    width: 100%; border-collapse: collapse; background: #111;
+    border: 1px solid #333; color: white;
+}
+.data-table th, .data-table td {
+    padding: 20px; text-align: left; border-bottom: 1px solid #222;
+}
+.data-table tr:hover { background: #1a1a1a; cursor: pointer; }
+.gold-text { color: var(--gold); font-weight: bold; }
+.view-btn {
+    background: var(--gold); border: none; padding: 8px 15px;
+    color: black; font-weight: bold; cursor: pointer;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; } /* Hide default cursor */
-
-body {
-    background-color: var(--dark);
-    color: var(--text);
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+/* Modal Styling */
+.modal {
+    display: none; position: fixed; z-index: 10000; 
+    left: 0; top: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.9); backdrop-filter: blur(5px);
 }
-
-/* Custom Cursor */
-.cursor-dot {
-    width: 20px; height: 20px; background: var(--gold);
-    position: fixed; border-radius: 50%; pointer-events: none;
-    z-index: 9999; transform: translate(-50%, -50%);
-    mix-blend-mode: difference; transition: transform 0.1s;
+.modal-content {
+    background: #111; margin: 10% auto; padding: 40px;
+    border: 1px solid var(--gold); width: 60%; position: relative;
+    animation: slideUp 0.4s ease-out;
 }
-
-/* Typography & Hero */
-.hero {
-    height: 100vh; display: flex; align-items: center; padding: 0 10%;
-    background: url('https://images.unsplash.com/photo-1541250848049-b4f71413cc30?q=80&w=2070') no-repeat center/cover;
-}
-
-.hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to right, #050505 30%, transparent);
-}
-
-.hero-content { position: relative; z-index: 10; }
-
-.main-title {
-    font-size: clamp(4rem, 10vw, 8rem); font-weight: 900;
-    line-height: 0.9; color: var(--gold); text-transform: uppercase;
-}
-
-.reveal-text { letter-spacing: 5px; font-weight: 300; margin-bottom: 20px; opacity: 0.7; }
-
-/* Grid-based Stats */
-.stats-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    background: var(--accent); padding: 80px 10%; border-top: 1px solid #333;
-}
-
-.stat-item { text-align: center; border-right: 1px solid #333; }
-.stat-item:last-child { border: none; }
-
-.stat-number { font-size: 5rem; font-weight: 900; display: block; color: var(--gold); }
-.stat-label { font-size: 0.8rem; letter-spacing: 3px; color: #666; }
-
-/* Interactive Timeline Cards */
-.legacy-section { padding: 100px 10%; }
-.section-heading { font-size: 3rem; margin-bottom: 50px; text-align: center; color: var(--gold); }
-
-.timeline-container { display: flex; flex-direction: column; gap: 20px; }
-
-.milestone-card {
-    background: #111; padding: 30px; border: 1px solid #222;
-    display: flex; gap: 40px; align-items: center; transition: 0.5s;
-}
-
-.milestone-card:hover { background: #1a1a1a; border-color: var(--gold); transform: scale(1.02); }
-
-.m-year { font-size: 3rem; font-weight: 900; color: #333; transition: 0.5s; }
-.milestone-card:hover .m-year { color: var(--gold); }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .stats-grid { grid-template-columns: 1fr; gap: 50px; }
-    .stat-item { border-right: none; border-bottom: 1px solid #333; padding-bottom: 30px; }
-    .main-title { font-size: 4rem; }
-}
+@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.close-btn { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; color: var(--gold); }
