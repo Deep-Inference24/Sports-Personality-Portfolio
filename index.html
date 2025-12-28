@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neeraj Chopra | The Golden Arm</title>
+    <title>Neeraj Chopra | The Golden Legend</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
 </head>
@@ -11,20 +11,22 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
+    <div class="bg-gradient-blur"></div>
+
     <nav class="navbar">
         <div class="logo hover-target">NEERAJ CHOPRA</div>
     </nav>
 
-    <section id="stats" class="stats-grid">
-        <div class="stat-item hover-target">
+    <section id="stats" class="stats-grid grid-border">
+        <div class="stat-item hover-target border-right" style="--accent: #6366f1;">
             <span class="stat-number count" data-target="89.94">0</span>
             <span class="stat-label">PERSONAL BEST (M)</span>
         </div>
-        <div class="stat-item hover-target">
+        <div class="stat-item hover-target border-right" style="--accent: #f43f5e;">
             <span class="stat-number count" data-target="2">0</span>
             <span class="stat-label">OLYMPIC MEDALS</span>
         </div>
-        <div class="stat-item hover-target">
+        <div class="stat-item hover-target" style="--accent: #C5A059;">
             <span class="stat-number count" data-target="1">0</span>
             <span class="stat-label">WORLD RANKING</span>
         </div>
@@ -43,36 +45,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover-target row-clickable" onclick="openModal('2016')">
-                        <td>2016</td>
-                        <td>World U20 Championships</td>
+                    <tr class="hover-target row-clickable color-row-1" onclick="openModal('2016')">
+                        <td class="year-cell">2016</td>
+                        <td class="event-cell">World U20 Championships</td>
                         <td>86.48m</td>
                         <td>
                             <div class="result-cell">
-                                <span class="gold-text">WORLD RECORD</span>
-                                <span class="click-hint">Click to know more</span>
+                                <span class="res-text">WORLD RECORD</span>
+                                <span class="click-hint">Deep Dive</span>
                             </div>
                         </td>
                     </tr>
-                    <tr class="hover-target row-clickable" onclick="openModal('2021')">
-                        <td>2021</td>
-                        <td>Tokyo Olympics</td>
+                    <tr class="hover-target row-clickable color-row-2" onclick="openModal('2021')">
+                        <td class="year-cell">2021</td>
+                        <td class="event-cell">Tokyo Olympics</td>
                         <td>87.58m</td>
                         <td>
                             <div class="result-cell">
-                                <span class="gold-text">GOLD MEDAL</span>
-                                <span class="click-hint">Click to know more</span>
+                                <span class="res-text">GOLD MEDAL</span>
+                                <span class="click-hint">Deep Dive</span>
                             </div>
                         </td>
                     </tr>
-                    <tr class="hover-target row-clickable" onclick="openModal('2023')">
-                        <td>2023</td>
-                        <td>World Athletics Champ</td>
+                    <tr class="hover-target row-clickable color-row-3" onclick="openModal('2023')">
+                        <td class="year-cell">2023</td>
+                        <td class="event-cell">World Athletics Champ</td>
                         <td>88.17m</td>
                         <td>
                             <div class="result-cell">
-                                <span class="gold-text">GOLD MEDAL</span>
-                                <span class="click-hint">Click to know more</span>
+                                <span class="res-text">GOLD MEDAL</span>
+                                <span class="click-hint">Deep Dive</span>
                             </div>
                         </td>
                     </tr>
