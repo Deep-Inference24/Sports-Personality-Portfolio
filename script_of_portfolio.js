@@ -27,15 +27,27 @@ const countNumbers = () => {
     });
 };
 
-// 3. INTERSECTION OBSERVER (Pro way to handle scroll)
-const observerOptions = { threshold: 0.5 };
+// 3. IMPROVED INTERSECTION OBSERVER
+const statsSection = document.querySelector('#stats');
+
+const observerOptions = {
+    root: null, // means use the browser viewport
+    threshold: 0.2 // trigger when at least 20% of the section is visible
+};
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            countNumbers();
-            observer.unobserve(entry.target);
+            countNumbers(); // This starts the 0 to 89.94 animation
+            observer.unobserve(entry.target); // Stop watching once animated
         }
     });
 }, observerOptions);
 
-observer.observe(document.querySelector('#stats'));
+// This ensures the observer starts watching the stats section
+if (statsSection) {
+    observer.observe(statsSection);
+} else {
+    // Backup: If the observer fails, just run the numbers anyway
+    countNumbers();
+}
