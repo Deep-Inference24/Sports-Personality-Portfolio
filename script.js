@@ -1,43 +1,64 @@
-// 1. Cursor Dot
+// 1. DUAL-ELEMENT CURSOR
+const dot = document.querySelector('.cursor-dot');
+const outline = document.querySelector('.cursor-outline');
+
 document.addEventListener('mousemove', (e) => {
-    const dot = document.querySelector('.cursor-dot');
-    if(dot) { dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px'; }
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+    outline.style.left = e.clientX + 'px';
+    outline.style.top = e.clientY + 'px';
 });
 
-// 2. Optimized Counter
-const runCounters = () => {
+// Cursor Reactivity
+document.querySelectorAll('.hover-target, .row-clickable').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        outline.style.transform = 'translate(-50%, -50%) scale(1.8)';
+        outline.style.background = 'rgba(197, 160, 89, 0.1)';
+        dot.style.transform = 'translate(-50%, -50%) scale(0.5)';
+    });
+    item.addEventListener('mouseleave', () => {
+        outline.style.transform = 'translate(-50%, -50%) scale(1)';
+        outline.style.background = 'transparent';
+        dot.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+});
+
+// 2. COUNTER ENGINE (Fixed '0' issue)
+const countStats = () => {
     document.querySelectorAll('.count').forEach(c => {
         const target = parseFloat(c.getAttribute('data-target'));
-        let count = 0;
-        const speed = target / 100;
+        let current = 0;
+        const inc = target / 100;
         const update = () => {
-            count += speed;
-            if (count < target) {
-                c.innerText = target % 1 !== 0 ? count.toFixed(2) : Math.floor(count);
-                setTimeout(update, 20);
+            current += inc;
+            if (current < target) {
+                c.innerText = target % 1 !== 0 ? current.toFixed(2) : Math.floor(current);
+                requestAnimationFrame(update);
             } else { c.innerText = target; }
         };
         update();
     });
 };
 
-// 3. Trigger Logic
-const obs = new IntersectionObserver((es) => {
-    es.forEach(e => { if(e.isIntersecting) { runCounters(); obs.unobserve(e.target); }});
-}, { threshold: 0.1 });
-const sBox = document.querySelector('#stats');
-if(sBox) obs.observe(sBox);
+const observer = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting) { countStats(); observer.disconnect(); }
+}, { threshold: 0.5 });
+observer.observe(document.querySelector('#stats'));
 
-// 4. Modal Database
-const db = {
-    '2016': { t: "2016 World Record", d: "First Indian to set a world record in Bydgoszcz (86.48m)." },
-    '2021': { t: "2021 Tokyo Gold", d: "Historic Olympic Gold with a throw of 87.58m." },
-    '2023': { t: "2023 World Champ", d: "Crowned World Champion in Budapest with 88.17m." }
+// 3. MODAL DATABASE
+const data = {
+    '2016': { t: "WORLD U20 RECORD", d: "A historic 86.48m throw in Bydgoszcz, Poland. Neeraj became the first Indian to hold a world record in track and field." },
+    '2021': { t: "TOKYO OLYMPIC GOLD", d: "With a second-round throw of 87.58m, he secured India's first ever track and field Olympic Gold medal." },
+    '2023': { t: "WORLD CHAMPION", d: "Secured Gold at the World Athletics Championships in Budapest with a throw of 88.17m." }
 };
 
 window.openModal = (yr) => {
-    document.getElementById('modalBody').innerHTML = `<h2 style="color:#C5A059">${db[yr].t}</h2><p style="margin-top:15px">${db[yr].d}</p>`;
-    document.getElementById('detailsModal').style.display = "block";
+    const modal = document.getElementById('detailsModal');
+    const body = document.getElementById('modalBody');
+    body.innerHTML = `<h1 style="color:#C5A059; font-family:Syncopate; font-size:3rem; margin-bottom:30px;">${data[yr].t}</h1><p style="font-size:1.4rem; line-height:1.6; font-weight:300;">${data[yr].d}</p>`;
+    modal.style.display = "block";
 };
 
 window.closeModal = () => document.getElementById('detailsModal').style.display = "none";
+
+window.onclick = (e) => { if (e.target.id === 'detailsModal') closeModal(); };
