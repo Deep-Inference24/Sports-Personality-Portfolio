@@ -1,16 +1,20 @@
-// 1. CUSTOM CURSOR
+// 1. CUSTOM CURSOR LOGIC
 const cursor = document.querySelector('.cursor-dot');
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
+if (cursor) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+}
 
-// 2. DECIMAL COUNTER LOGIC
+// 2. THE COUNTER FUNCTION (Defined FIRST to avoid errors)
 const countNumbers = () => {
     const counters = document.querySelectorAll('.count');
     counters.forEach(counter => {
         const target = parseFloat(counter.getAttribute('data-target'));
-        const duration = 2000; // 2 seconds
+        if (isNaN(target)) return; // Safety check
+
+        const duration = 2000; 
         let startTime = null;
 
         const animate = (currentTime) => {
@@ -20,34 +24,37 @@ const countNumbers = () => {
             
             counter.innerText = target % 1 !== 0 ? value.toFixed(2) : Math.floor(value);
             
-            if (progress < 1) requestAnimationFrame(animate);
-            else counter.innerText = target;
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                counter.innerText = target;
+            }
         };
         requestAnimationFrame(animate);
     });
 };
 
-// 3. IMPROVED INTERSECTION OBSERVER
-const statsSection = document.querySelector('#stats');
+// 3. THE TRIGGER (Intersection Observer)
+const startObserver = () => {
+    const statsSection = document.querySelector('#stats');
+    
+    if (!statsSection) {
+        countNumbers(); // Fallback: If section not found, just run it
+        return;
+    }
 
-const observerOptions = {
-    root: null, // means use the browser viewport
-    threshold: 0.2 // trigger when at least 20% of the section is visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Trigger when the section is visible
+            if (entry.isIntersecting) {
+                countNumbers();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(statsSection);
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            countNumbers(); // This starts the 0 to 89.94 animation
-            observer.unobserve(entry.target); // Stop watching once animated
-        }
-    });
-}, observerOptions);
-
-// This ensures the observer starts watching the stats section
-if (statsSection) {
-    observer.observe(statsSection);
-} else {
-    // Backup: If the observer fails, just run the numbers anyway
-    countNumbers();
-}
+// 4. RUN ON PAGE LOAD
+window.addEventListener('DOMContentLoaded', startObserver);
