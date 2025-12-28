@@ -1,0 +1,172 @@
+/* 1. CSS VARIABLES - Makes it easy to change colors globally */
+:root {
+    --gold: #D4AF37;
+    --navy: #000080;
+    --dark-bg: #0b0b0b;
+    --glass-white: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* 2. GENERAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: #fff;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* 3. NAVIGATION BAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 300;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--gold);
+}
+
+/* 4. HERO SECTION */
+.hero {
+    height: 100vh;
+    /* Uses a gradient overlay so text is readable over any background image */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent), 
+                url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2070') no-repeat center/cover;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+.hero-content h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    color: var(--gold);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: #ccc;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 35px;
+    background: var(--gold);
+    color: #000;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.4s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--gold);
+}
+
+/* 5. STATS SECTION (GLASSMORPHISM) */
+.stats-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 100px 8%;
+    background: #111;
+    flex-wrap: wrap; /* Makes it responsive */
+    gap: 20px;
+}
+
+.stat-card {
+    background: var(--glass-white);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+    flex: 1;
+    min-width: 250px;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    background: rgba(212, 175, 55, 0.1); /* Slight gold tint on hover */
+}
+
+.stat-card h2 {
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+/* 6. TIMELINE SECTION */
+.timeline {
+    padding: 100px 8%;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--gold);
+}
+
+.milestone {
+    background: #1a1a1a;
+    padding: 25px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-left: 4px solid transparent;
+}
+
+.milestone h3 {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+}
+
+.desc {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-out
