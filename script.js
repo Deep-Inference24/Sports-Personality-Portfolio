@@ -1,42 +1,43 @@
-// 1. STAT COUNTER
-const countNumbers = () => {
-    const counters = document.querySelectorAll('.count');
-    counters.forEach(counter => {
-        const target = parseFloat(counter.getAttribute('data-target'));
-        const duration = 2000;
-        let startTime = null;
-        const animate = (currentTime) => {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            const value = progress * target;
-            counter.innerText = target % 1 !== 0 ? value.toFixed(2) : Math.floor(value);
-            if (progress < 1) requestAnimationFrame(animate);
-            else counter.innerText = target;
+// 1. Cursor Dot
+document.addEventListener('mousemove', (e) => {
+    const dot = document.querySelector('.cursor-dot');
+    if(dot) { dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px'; }
+});
+
+// 2. Optimized Counter
+const runCounters = () => {
+    document.querySelectorAll('.count').forEach(c => {
+        const target = parseFloat(c.getAttribute('data-target'));
+        let count = 0;
+        const speed = target / 100;
+        const update = () => {
+            count += speed;
+            if (count < target) {
+                c.innerText = target % 1 !== 0 ? count.toFixed(2) : Math.floor(count);
+                setTimeout(update, 20);
+            } else { c.innerText = target; }
         };
-        requestAnimationFrame(animate);
+        update();
     });
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) { countNumbers(); observer.unobserve(entry.target); }
-    });
-}, { threshold: 0.5 });
-document.querySelectorAll('#stats').forEach(s => observer.observe(s));
+// 3. Trigger Logic
+const obs = new IntersectionObserver((es) => {
+    es.forEach(e => { if(e.isIntersecting) { runCounters(); obs.unobserve(e.target); }});
+}, { threshold: 0.1 });
+const sBox = document.querySelector('#stats');
+if(sBox) obs.observe(sBox);
 
-// 2. MODAL LOGIC
-const eventData = {
-    '2016': { title: "2016 World U20 Record", info: "86.48m throw in Poland. First Indian to set a world record in athletics." },
-    '2021': { title: "2021 Tokyo Olympic Gold", info: "87.58m throw. Historic first track and field Gold for India." },
-    '2023': { title: "2023 World Champion", info: "88.17m in Budapest. Became the reigning World Champion." }
+// 4. Modal Database
+const db = {
+    '2016': { t: "2016 World Record", d: "First Indian to set a world record in Bydgoszcz (86.48m)." },
+    '2021': { t: "2021 Tokyo Gold", d: "Historic Olympic Gold with a throw of 87.58m." },
+    '2023': { t: "2023 World Champ", d: "Crowned World Champion in Budapest with 88.17m." }
 };
 
-window.openModal = function(year) {
-    const data = eventData[year];
-    document.getElementById('modalBody').innerHTML = `<h2>${data.title}</h2><p style="margin-top:20px">${data.info}</p>`;
+window.openModal = (yr) => {
+    document.getElementById('modalBody').innerHTML = `<h2 style="color:#C5A059">${db[yr].t}</h2><p style="margin-top:15px">${db[yr].d}</p>`;
     document.getElementById('detailsModal').style.display = "block";
 };
 
-window.closeModal = function() {
-    document.getElementById('detailsModal').style.display = "none";
-};
+window.closeModal = () => document.getElementById('detailsModal').style.display = "none";
