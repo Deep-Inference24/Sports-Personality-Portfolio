@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neeraj Chopra | The Golden Legend</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
@@ -10,7 +9,9 @@
 <body>
     <div id="cursor-wrapper">
         <div class="cursor-dot"></div>
-        <div class="cursor-outline"></div>
+        <div class="cursor-outline">
+            <span id="cursor-text">CLICK TO KNOW MORE</span>
+        </div>
     </div>
 
     <nav class="navbar">
@@ -19,7 +20,7 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title glow-text">90.23<br><span class="outline-text">METERS</span></h1>
+            <h1 class="hero-title grand-glow">NEERAJ<br><span class="outline-text">CHOPRA</span></h1>
             <p class="hero-tagline">"The Golden Arm of India | Olympic & World Champion"</p>
         </div>
         <div class="hero-image-wrapper">
@@ -28,31 +29,27 @@
     </section>
 
     <section class="stats-grid">
-        <div class="stat-box">
-            <h2>PERSONAL BEST</h2>
-            <p class="counter" data-target="90.23">0</p><span>m</span>
-        </div>
-        <div class="stat-box">
-            <h2>OLYMPIC GOLDS</h2>
-            <p class="counter" data-target="1">0</p>
-        </div>
-        <div class="stat-box">
-            <h2>WORLD RANKING</h2>
-            <p>#1</p>
-        </div>
+        <div class="stat-box"><h2>PERSONAL BEST</h2><div class="num-wrap"><span class="counter" data-target="90.23">0</span><span class="unit">m</span></div></div>
+        <div class="stat-box"><h2>OLYMPIC MEDALS</h2><span class="counter" data-target="2">0</span></div>
+        <div class="stat-box"><h2>WORLD RANKING</h2><span>#1</span></div>
     </section>
 
-    <section class="achievements-section">
-        <h2 class="section-title">MAJOR ACHIEVEMENTS</h2>
-        <div class="table-container">
+    <section class="info-split">
+        <div class="achievements-col">
+            <h2 class="section-title">MAJOR ACHIEVEMENTS</h2>
             <table class="data-table">
-                <tr class="row-clickable" onclick="openModal('tokyo')">
-                    <td>Tokyo Olympics</td><td>2021</td><td class="gold-text">GOLD</td>
-                </tr>
-                <tr class="row-clickable" onclick="openModal('budapest')">
-                    <td>World Champ</td><td>2023</td><td class="gold-text">GOLD</td>
-                </tr>
+                <tr class="row-clickable" onclick="openModal('tokyo')"><td>Tokyo Olympics</td><td>2021</td><td class="gold-text">GOLD</td></tr>
+                <tr class="row-clickable" onclick="openModal('budapest')"><td>World Champ</td><td>2023</td><td class="gold-text">GOLD</td></tr>
+                <tr class="row-clickable" onclick="openModal('paris')"><td>Paris Olympics</td><td>2024</td><td class="silver-text">SILVER</td></tr>
+                <tr class="row-clickable" onclick="openModal('diamond')"><td>Diamond League</td><td>2022</td><td class="gold-text">GOLD</td></tr>
             </table>
+        </div>
+        
+        <div class="facts-col">
+            <h2 class="section-title">DO YOU KNOW?</h2>
+            <div class="fact-item"><h4>AUGUST 7</h4><p>National Javelin Day in India.</p></div>
+            <div class="fact-item"><h4>110 KM/H</h4><p>Speed of release at launch.</p></div>
+            <div class="fact-item"><h4>ARMY PRIDE</h4><p>Subedar Major in Rajputana Rifles.</p></div>
         </div>
     </section>
 
