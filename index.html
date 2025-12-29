@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neeraj Chopra | 90.23m Legend</title>
+    <title>Neeraj Chopra | The Golden Legend</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
 </head>
@@ -19,32 +19,49 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">90.23<br><span class="outline-text">METERS</span></h1>
+            <h1 class="hero-title glow-text">90.23<br><span class="outline-text">METERS</span></h1>
             <p class="hero-tagline">"The Golden Arm of India | Olympic & World Champion"</p>
         </div>
         <div class="hero-image-wrapper">
-            <img src="https://img.olympics.com/images/image/private/t_s_pog_static_content_v3/f_auto/primary/p868u8a7tqmx6id9atx7" alt="Neeraj Chopra Tokyo Gold" class="hero-img">
+            <img src="image_192366.png" alt="Neeraj Chopra Tokyo Gold" class="hero-img">
         </div>
     </section>
 
     <section class="stats-grid">
-        <div class="stat-box"><h2>PERSONAL BEST</h2><p>90.23m</p></div>
-        <div class="stat-box"><h2>NATIONAL RECORD</h2><p>90.23m</p></div>
-        <div class="stat-box"><h2>WORLD RANKING</h2><p>#1</p></div>
-    </section>
-
-    <section class="facts-section">
-        <h2 class="section-title">THRILLING FACTS</h2>
-        <div class="facts-container">
-            <div class="fact-card"><h3>AUGUST 7</h3><p>National Javelin Day in India.</p></div>
-            <div class="fact-card"><h3>110 KM/H</h3><p>The speed of his javelin release.</p></div>
-            <div class="fact-card"><h3>SUBEDAR MAJOR</h3><p>His rank in the Indian Army.</p></div>
+        <div class="stat-box">
+            <h2>PERSONAL BEST</h2>
+            <p class="counter" data-target="90.23">0</p><span>m</span>
+        </div>
+        <div class="stat-box">
+            <h2>OLYMPIC GOLDS</h2>
+            <p class="counter" data-target="1">0</p>
+        </div>
+        <div class="stat-box">
+            <h2>WORLD RANKING</h2>
+            <p>#1</p>
         </div>
     </section>
 
-    <footer class="footer">
-        <p>© 2025 NEERAJ CHOPRA PORTFOLIO | THE GOLDEN LEGACY</p>
-    </footer>
+    <section class="achievements-section">
+        <h2 class="section-title">MAJOR ACHIEVEMENTS</h2>
+        <div class="table-container">
+            <table class="data-table">
+                <tr class="row-clickable" onclick="openModal('tokyo')">
+                    <td>Tokyo Olympics</td><td>2021</td><td class="gold-text">GOLD</td>
+                </tr>
+                <tr class="row-clickable" onclick="openModal('budapest')">
+                    <td>World Champ</td><td>2023</td><td class="gold-text">GOLD</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
